@@ -8,7 +8,7 @@ type PropsType = {
 }
 
 export const WishListItem = ({ item, dispatchWishList, WISH_LIST_REDUCER_ACTIONS }: PropsType) => {
-    const { dispatch, REDUCER_ACTIONS } = useCart()
+    const { dispatchCart, REDUCER_ACTIONS } = useCart()
 
     const onRemoveFromWishList = () => dispatchWishList({
         type: WISH_LIST_REDUCER_ACTIONS.REMOVE,
@@ -16,7 +16,7 @@ export const WishListItem = ({ item, dispatchWishList, WISH_LIST_REDUCER_ACTIONS
     })
 
     const onAddToCart = () => {
-        dispatch({
+        dispatchCart({
             type: REDUCER_ACTIONS.ADD,
             payload: { ...item, qty: 1 }
         })

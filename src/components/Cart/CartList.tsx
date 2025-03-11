@@ -14,7 +14,7 @@ type PropsType = {
 export const CartList = () => {
     const navicate = useNavigate()
     const [checkout, setCheckout] = useState(false);
-    const { dispatch, REDUCER_ACTIONS, totalItems, totalPrice, cart } = useCart()
+    const { dispatchCart, REDUCER_ACTIONS, totalItems, totalPrice, cart } = useCart()
 
     const goToCheckOut = () => {
         navicate(`/checkout`, {})
@@ -37,7 +37,7 @@ export const CartList = () => {
                             <CartItem
                                 key={item.productId}
                                 item={item}
-                                dispatchCart={dispatch}
+                                dispatchCart={dispatchCart}
                                 CART_REDUCER_ACTIONS={REDUCER_ACTIONS}
                             />
                         ))}

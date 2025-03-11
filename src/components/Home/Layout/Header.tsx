@@ -8,6 +8,7 @@ import { LeftLayout } from "./LeftLayout";
 import { useFilterContext } from "../../../context/FilterContext";
 
 function Header() {
+    const navigate = useNavigate()
     // Layout hambugen icon handle
     // const toggleOpen: HTMLElement | null = document.getElementById('toggleOpen');
     // const toggleClose: HTMLElement | null = document.getElementById('toggleClose');
@@ -31,8 +32,9 @@ function Header() {
     }
 
     const handleCategoryClick = (categoryId: string) => {
-        dispatch({ type: "CATEGORY", payload: { category: 0 } });
-        dispatch({ type: "CATEGORY", payload: { category: categoryId } });
+      navigate(`/products`, {});
+      dispatch({ type: "CATEGORY", payload: { category: 0 } });
+      dispatch({ type: "CATEGORY", payload: { category: categoryId } });
     };
     
     const { state, dispatch } = useFilterContext();

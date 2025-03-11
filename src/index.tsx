@@ -34,12 +34,12 @@ root.render(
         <ProductProvider>
           <FilterProvider>
             <CartProvider>
-              <WishListProvider>
+              {/* <WishListProvider> */}
                 <Router>
                   <ScrollToTop />
                   <App />
                 </Router>
-              </WishListProvider>
+              {/* </WishListProvider> */}
             </CartProvider>
           </FilterProvider>
         </ProductProvider>

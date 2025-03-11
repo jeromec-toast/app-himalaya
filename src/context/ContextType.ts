@@ -14,7 +14,7 @@ export const initStateProductList: IProductMaster[] = [
         "quantity": 100,
         "total": 100,
         "price": 200,
-        "categrory": 1,
+        "category": 1,
         "rating": 1,
         "active": true,
         "trending": 1,

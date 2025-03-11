@@ -49,7 +49,7 @@ export const FilterProvider = ({ children }: ProviderProps) => {
 
     function category(products: IProductMaster[] | null | undefined) {
         if (!products || !state || state.category == null) return products ?? []; // Ensure products and state exist
-        return state.category === 0 ? products : products.filter(product => product.categrory === state.category);
+        return state.category === 0 ? products : products.filter(product => product.category === state.category);
     }
     
     function productSearch(products: IProductMaster[] | null | undefined) {

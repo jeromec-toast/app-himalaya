@@ -94,7 +94,7 @@ const useCartContext = (initCartState: CartStateType) => {
 
     useEffect(() => {
         if (!isLoading) {
-            dispatch({
+            dispatchCart({
                 type: REDUCER_ACTIONS.SET,
                 payload: data,
             })
@@ -102,7 +102,7 @@ const useCartContext = (initCartState: CartStateType) => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [isLoading])
 
-    const [state, dispatch] = useReducer(reducer, initCartState)
+    const [state, dispatchCart] = useReducer(reducer, initCartState)
 
     const REDUCER_ACTIONS = useMemo(() => {
         return REDUCER_ACTION_TYPE
@@ -124,13 +124,13 @@ const useCartContext = (initCartState: CartStateType) => {
         return itemA - itemB
     })
 
-    return { dispatch, REDUCER_ACTIONS, totalItems, totalPrice, cart }
+    return { dispatchCart, REDUCER_ACTIONS, totalItems, totalPrice, cart }
 }
 
 export type UseCartContextType = ReturnType<typeof useCartContext>
 
 const initCartContextState: UseCartContextType = {
-    dispatch: () => { },
+    dispatchCart: () => { },
     REDUCER_ACTIONS: REDUCER_ACTION_TYPE,
     totalItems: 0,
     totalPrice: '',

@@ -5,6 +5,7 @@ import { useFilterContext } from "../../context/FilterContext";
 import useCart from "../../hooks/useCart";
 import { CartItemType, ReducerAction, ReducerActionType } from "../../context/CartProvider";
 import { ProductEmptyCard } from "./ProductEmptyCard";
+import { Link } from "react-router-dom";
 
 type PropsType = {
     item: CartItemType,
@@ -15,29 +16,48 @@ type PropsType = {
 export const ProductList = () => {
     const [show, setShow] = useState(false);
 
-    const { dispatch, REDUCER_ACTIONS, cart } = useCart()
+    const { dispatchCart, REDUCER_ACTIONS, cart } = useCart()
 
-    const { products } = useFilterContext();
+    const { products,dispatch } = useFilterContext();
 
     let prodCount = [1, 2, 3, 4, 5, 6]
 
     let pageContent: ReactElement | ReactElement[] = <p>No product found...</p>
 
     if (products?.length) {
-        pageContent = products.map(product => {
-            const inCart: boolean = cart.some(item => item.productName === product.productName)
-            return (
-                <ProductCard
-                    key={product.productId}
-                    product={product}
-                    dispatchCart={dispatch}
-                    CART_REDUCER_ACTIONS={REDUCER_ACTIONS}
-                    inCart={inCart}
-                />
-            )
-        })
+      pageContent = products.map((product) => {
+        const inCart: boolean = cart.some(
+          (item) => item.productName === product.productName
+        );
+        return (
+          <ProductCard
+            key={product.productId}
+            product={product}
+            dispatchCart={dispatchCart}
+            CART_REDUCER_ACTIONS={REDUCER_ACTIONS}
+            inCart={inCart}
+          />
+        );
+      });
+    } else {
+      return (
+        <section className="text-xl text-center max-w-4xl mx-auto my-10 py-5 dark:text-slate-100 rounded">
+          <div className="my-5">
+            <p className="bi bi-cart text-green-600 text-7xl mb-5"></p>
+            <p>Hey, it feels so light!</p>
+            <p>There is no product for your category or search.</p>
+          </div>
+          <Link
+            to="/products"
+            type="button"
+            onClick={() => dispatch({ type: "CLEAR_FILTER" })}
+            className="text-white bg-blue-700 hover:bg-blue-800 rounded-lg text-lg px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none"
+          >
+            Continue Shopping <i className="ml-2 bi bi-cart"></i>
+          </Link>
+        </section>
+      );
     }
-
     return (
         <>
             <main>

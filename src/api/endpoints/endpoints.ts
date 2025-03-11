@@ -341,7 +341,7 @@ const modifyProductMaster = (response: IApiResult) => {
         quantity: x.quantity,
         total: x.total,
         price: x.price,
-        categrory: x.categrory,
+        category: x.category,
         rating: x.rating,
         active: x.active,
         trending: x.trending,

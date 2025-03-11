@@ -35,7 +35,7 @@ export type productDataType = {
     quantity: number,
     total: number,
     price: number,
-    categrory: number,
+    category: number,
     rating: number,
     active: boolean,
     trending: number,
